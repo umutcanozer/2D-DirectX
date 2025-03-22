@@ -24,6 +24,15 @@
 #include "Mouse.h"
 #include "Graphics.h"
 
+struct Box {
+	int x;
+	int y;
+	int half_radius;
+	int r;
+	int g;
+	int b;
+};
+
 class Game
 {
 public:
@@ -34,13 +43,18 @@ public:
 private:
 	void ComposeFrame();
 	void UpdateModel();
-	/********************************/
-	/*  User Functions              */
-	/********************************/
+	void DrawBox(Box& box);
+	bool CheckOverlapping(Box& box, Box& other_box);
+
 private:
 	MainWindow& wnd;
 	Graphics gfx;
-	/********************************/
-	/*  User Variables              */
-	/********************************/
+
+	int vx;
+	int vy;
+
+	bool colliding;
+
+	Box box;
+	Box fixed_box;
 };
